@@ -15,27 +15,36 @@
 				   <div class="form-group">
 					  <label for="firstname" class="col-sm-2 control-label">Username</label>
 					  <div class="col-sm-8">
-						 <input type="text" class="form-control" name="username" 
-							placeholder="John Doe">
+						 <input type="text" class="form-control" name="username">
+					  </div>
+					  <div class="col-sm-2">
+					  	<?php
+							echo "hej";
+						?>
 					  </div>
 				   </div>
 				   <div class="form-group">
 					  <label for="lastname" class="col-sm-2 control-label">Password</label>
-					  <div class="col-sm-10">
-						 <input type="password" class="form-control" name="password" 
-							placeholder="********">
+					  <div class="col-sm-8">
+						 <input type="password" class="form-control" name="password">
+					  </div>
+				   </div>
+				   <div class="form-group">
+					  <label for="lastname" class="col-sm-2 control-label">Re-type password</label>
+					  <div class="col-sm-8">
+						 <input type="password" class="form-control" name="repassword">
 					  </div>
 				   </div>
 				   <div class="form-group">
 					  <div class="col-sm-offset-2 col-sm-10">
-						 <input type="submit" name="submit" class="btn btn-primary" value=" Log In ">
+						 <input type="submit" name="submit" class="btn btn-primary" value=" Sign Up ">
 					  </div>
 				   </div>
 				</form>
 				<?php echo '<div id="login_error">' . $error . '</div>'; ?>
 				<?php include 'footer.php'; ?>
 			</div>	
-		</div>
+		</div> <!-- right section -->
 	</div>	
 </body>
 </html>
