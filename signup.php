@@ -15,7 +15,7 @@
 				<h1 class="templatemo-header">Sign Up</h1>
 				<form class="form-horizontal" role="form" action="" method="POST">
 				   <div class="form-group">
-					  <label for="firstname" class="col-sm-2 control-label">Username</label>
+					  <label for="firstname" class="col-sm-3 control-label">Username</label>
 					  <div class="col-sm-8">
 						 <input type="text" class="form-control" id="username" name="username">
 					  </div>
@@ -23,24 +23,29 @@
 					  </div>
 				   </div>
 				   <div class="form-group">
-					  <label for="lastname" class="col-sm-2 control-label">Password</label>
+					  <label for="lastname" class="col-sm-3 control-label">Password</label>
 					  <div class="col-sm-8">
 						 <input type="password" class="form-control" name="password">
 					  </div>
 				   </div>
 				   <div class="form-group">
-					  <label for="lastname" class="col-sm-2 control-label">Re-type password</label>
+					  <label for="lastname" class="col-sm-3 control-label">Re-type password</label>
 					  <div class="col-sm-8">
 						 <input type="password" class="form-control" name="repassword">
 					  </div>
 				   </div>
 				   <div class="form-group">
-					  <div class="col-sm-offset-2 col-sm-10">
+					  <label for="home" class="col-sm-3 control-label">Home address</label>
+					  <div class="col-sm-8">
+						 <input type="test" class="form-control" name="home">
+					  </div>
+				   </div>
+				   <div class="form-group">
+					  <div class="col-sm-offset-3 col-sm-10">
 						 <input type="submit" name="submit" class="btn btn-primary" value=" Sign Up ">
 					  </div>
 				   </div>
 				</form>
-				<?php echo '<div id="login_error">' . $error . '</div>'; ?>
 				<?php include 'footer.php'; ?>
 			</div>	
 		</div> <!-- right section -->

@@ -1,6 +1,7 @@
 <?php
-session_start(); // Starting Session
 $error=''; // Variable To Store Error Message
+
+require_once 'connection.php';
 
 if (isset($_POST['submit'])) {
 	
@@ -19,20 +20,17 @@ if (isset($_POST['submit'])) {
 		//$username = mysql_real_escape_string($username);
 		//$password = mysql_real_escape_string($password);
 		
-		$connection = mysql_connect("localhost", "letzei", "password123");
-		// Selecting Database
-		$db = mysql_select_db("test", $connection);
 		// SQL query to fetch information of registerd users and finds user match.
-		$query = mysql_query("select * from members where password='$password' AND username='$username'", $connection);
+		$query = mysqli_query($con, "select * from members where password='$password' AND username='$username'");
 		$error = $query;
-		$rows = mysql_num_rows($query);
+		$rows = mysqli_num_rows($query);
 		if ($rows == 1) {
 			$_SESSION['login_user']=$username; // Initializing Session
 			header("location: index.php"); // Redirecting To Other Page
 		} else {
 			$error = "Username or Password is invalid";
 		}
-		mysql_close($connection); // Closing Connection
+		mysqli_close($con); // Closing Connection
 	}
 }
 ?>
