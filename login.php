@@ -14,14 +14,14 @@
 				<form class="form-horizontal" role="form" action="" method="POST">
 				   <div class="form-group">
 					  <label for="firstname" class="col-sm-2 control-label">Username</label>
-					  <div class="col-sm-8">
+					  <div class="col-sm-7">
 						 <input type="text" class="form-control" name="username" 
 							placeholder="John Doe">
 					  </div>
 				   </div>
 				   <div class="form-group">
 					  <label for="lastname" class="col-sm-2 control-label">Password</label>
-					  <div class="col-sm-10">
+					  <div class="col-sm-7">
 						 <input type="password" class="form-control" name="password" 
 							placeholder="********">
 					  </div>
