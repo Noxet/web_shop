@@ -9,8 +9,12 @@ http://stackoverflow.com/questions/10525744/css-table-cell-equal-width
 */
 * {	font-family: 'Open Sans', sans-serif; }
 
-#login_error {
+.error {
 	color: #c00;
+}
+
+.success {
+	color: #0a0;
 }
 
 #welcome {

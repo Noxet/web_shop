@@ -1,5 +1,5 @@
 <head>
-	<title>Black White - Responsive HTML5 Template</title>
+	<title>Ma' Baker's Grade Shop</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta charset="UTF-8">
