@@ -32,7 +32,8 @@
 					  </div>
 				   </div>
 				</form>
-				<?php echo '<div id="login_error">' . $error . '</div>'; ?>
+				<?php echo '<div class="error">' . $error . '</div>'; ?>
+				<?php echo '<div class="success">' . $success . '</div>'; ?>
 				<?php include 'footer.php'; ?>
 			</div>	
 		</div>

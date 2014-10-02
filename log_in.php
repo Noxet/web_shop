@@ -1,5 +1,6 @@
 <?php
-$error=''; // Variable To Store Error Message
+$error='';
+$success = '';
 
 require_once 'connection.php';
 
@@ -21,12 +22,18 @@ if (isset($_POST['submit'])) {
 		//$password = mysql_real_escape_string($password);
 		
 		// SQL query to fetch information of registerd users and finds user match.
-		$query = mysqli_query($con, "select * from members where password='$password' AND username='$username'");
+		$query = mysqli_query($con, "select * from members where username='$username'");
 		$error = $query;
 		$rows = mysqli_num_rows($query);
 		if ($rows == 1) {
-			$_SESSION['login_user']=$username; // Initializing Session
-			header("location: index.php"); // Redirecting To Other Page
+			// check password
+			$row = mysqli_fetch_array($query);
+			if (crypt($password, $row['password']) == $row['password']) {
+				$_SESSION['user']=$username; // Initializing Session
+				header("location: index.php"); // Redirecting To Other Page
+			} else {
+				$error = "Username or Password is invalid";
+			}
 		} else {
 			$error = "Username or Password is invalid";
 		}
