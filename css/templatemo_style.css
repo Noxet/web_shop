@@ -17,6 +17,11 @@ http://stackoverflow.com/questions/10525744/css-table-cell-equal-width
 	float: right;
 }
 
+.signup_check {
+	width: 30px;
+	height: 30px;
+}
+
 html, body { height: 100%; }
 
 .green { color: #3B3; }

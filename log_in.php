@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 		//$username = mysql_real_escape_string($username);
 		//$password = mysql_real_escape_string($password);
 		
-		$connection = mysql_connect("localhost", "swag", "swag");
+		$connection = mysql_connect("localhost", "letzei", "password123");
 		// Selecting Database
 		$db = mysql_select_db("test", $connection);
 		// SQL query to fetch information of registerd users and finds user match.
