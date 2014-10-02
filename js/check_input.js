@@ -4,11 +4,13 @@ $(document).ready(function() {
 	$("#username").blur(function() {
 		var un = $("#username").val();
 		if (un.length > 2) {
-			if (un == "nox") {
-				fade_check("images/available.png");
-			} else {
-				fade_check("images/not_available.png");
-			}
+			$.post("../check_available.php", {username: un}, function(resp) {
+				if (resp == "ACK") {
+					fade_check("images/available.png");
+				} else {
+					fade_check("images/not_available.png");
+				}
+			});
 		} else {
 			$("#check_available").html(""); // clear it
 		}
