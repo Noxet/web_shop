@@ -20,3 +20,7 @@ while($row = mysqli_fetch_array($query)){
 }
 echo "Total: " . $_SESSION['total'];
 ?>
+<h2></h2>
+<td><a href="checkout.php">Buy with PayPal</a></td>
+<h3></h3>
+<td><a href="products.php">Back to shopping</a></td>
