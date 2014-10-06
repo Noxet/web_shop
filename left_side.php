@@ -27,7 +27,7 @@
 				  	echo '<li><a href="login.php"><i class="fa fa-sign-in fa-medium"></i>Log In</a></li>';
 				  	echo '<li><a href="signup.php"><i class="fa fa-database fa-medium"></i>Sign Up</a></li>';
 					} ?>
-				  <li><a href="contact.php"><i class="fa fa-envelope-o fa-medium"></i>Contact</a></li>
+				  <li><a href="rates.php"><i class="fa fa-comments-o fa-medium"></i>Rate Us</a></li>
 				</ul>
 			</div>
 		</div>
