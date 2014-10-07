@@ -15,7 +15,7 @@
 	<?php
 		if (isset($_SESSION['user'])) {
 			$name = $_SESSION['user'];
-			echo '<div id="welcome"><h3><small>Welcome ' . "$name" . '</small></h3></div>';
+			echo '<div id="welcome"><h3><small>Welcome ' . ucfirst($name) . '</small></h3></div>';
 		}
 	?>
 				<ul class="nav nav-stacked templatemo-nav">
