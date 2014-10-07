@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
 			$row = mysqli_fetch_array($query);
 			if (crypt($password, $row['password']) == $row['password']) {
 				$_SESSION['user']=$username; // Initializing Session
+				$error = "correct"; // TEST!!!
 				//header("location: index.php"); // Redirecting To Other Page
 			} else {
 				$error = "Username or Password is invalid";
