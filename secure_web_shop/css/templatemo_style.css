@@ -9,6 +9,16 @@ http://stackoverflow.com/questions/10525744/css-table-cell-equal-width
 */
 * {	font-family: 'Open Sans', sans-serif; }
 
+.receipt {
+	width: 350px;
+	border-style: dotted;
+	border-width: 2px;
+}
+
+#cart li {
+	display: inline;
+}
+
 .error {
 	color: #c00;
 }
