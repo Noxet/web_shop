@@ -1,4 +1,4 @@
-<?phdp
+<?php
 require_once 'connection.php';
 require 'secure.php';
 $error='';
