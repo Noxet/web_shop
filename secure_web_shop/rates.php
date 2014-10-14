@@ -15,8 +15,10 @@
 			$email = $_POST['email'];
 			$msg = $_POST['message'];
 
-			$query = mysqli_query($con, "insert into `user_rates` values(NULL, '$name', '$email', '$msg')");
-			if (!$query) {
+			if ($stmt = mysqli_prepare($con, "INSERT INTO user_rates(name, email, message) VALUES(?, ?, ?)")) {
+				mysqli_stmt_bind_param($stmt, "sss", $name, $email, $msg);
+				mysqli_stmt_execute($stmt);
+			} else {
 				$error = "Something went wrong, please contact our support";
 			}
 		}
@@ -64,9 +66,9 @@
 				<?php
 					while ($row = mysqli_fetch_assoc($res)) {
 						echo '<article class="templatemo-item">';
-						echo "<p>User: <b>{$row['name']}</b></br>";
-						echo "Email: {$row['email']}</p>";
-						echo "<p>Comment: {$row['message']}</p>";
+						echo "<p>User: <b>" . htmlentities($row['name']) . "</b></br>";
+						echo "Email: " . htmlentities($row['email']) . "</p>";
+						echo "<p>Comment: " . htmlentities($row['message']) . "</p>";
 					}
 				?>
 
