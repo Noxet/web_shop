@@ -14,26 +14,22 @@ if (isset($_POST['submit'])) {
 		// Define $username and $password
 		$username=$_POST['username'];
 		$password=$_POST['password'];
-		
-		// To protect MySQL injection for Security purpose
-		//$username = stripslashes($username);
-		//$password = stripslashes($password);
-		//$username = mysql_real_escape_string($username);
-		//$password = mysql_real_escape_string($password);
+	
+
+		// secure using prepared statements
+		if ($stmt = mysqli_prepare($con, "SELECT password FROM members WHERE username=?")) {
+			mysqli_stmt_bind_param($stmt, "s", $username); // bind the parameters
+			mysqli_stmt_execute($stmt); // execute statement
+			mysqli_stmt_bind_result($stmt, $pw); // bind the result
+			mysqli_stmt_fetch($stmt); // fetch
+		}
 		
 		// SQL query to fetch information of registerd users and finds user match.
-		$query = mysqli_query($con, "select * from members where username='$username'");
-		$rows = mysqli_num_rows($query);
-		if ($rows == 1) {
-			// check password
-			$row = mysqli_fetch_array($query);
-			if (crypt($password, $row['password']) == $row['password']) {
-				$_SESSION['user']=$username; // Initializing Session
-				header("location: index.php"); // Redirecting To Other Page
-				die();
-			} else {
-				$error = "Username or Password is invalid";
-			}
+		if (crypt($password, $pw) == $pw) {
+			$_SESSION['user']=$username; // Initializing Session
+			session_regenerate_id(); // regenerate to avoid session fixation attacks
+			header("location: index.php"); // Redirecting to index
+			die();
 		} else {
 			$error = "Username or Password is invalid";
 		}
