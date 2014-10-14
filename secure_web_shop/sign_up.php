@@ -1,4 +1,4 @@
-<?php
+<?phdp
 require_once 'connection.php';
 require 'secure.php';
 $error='';
@@ -15,12 +15,17 @@ if (isset($_POST['submit'])) {
 		$passwd = $_POST['password'];
 		$cpasswd = $_POST['cpassword'];
 		$home = $_POST['home'];
-
-		$res = mysqli_query($con, "select * from taken_usernames where username='$uname'");
 		
+		if ($stmt = mysqli_prepare($con, "SELECT * FROM taken_usernames WHERE username=?")) {
+			mysqli_stmt_bind_param($stmt, "s", $uname);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $taken);
+			mysqli_stmt_fetch($stmt);
+		}
+
 		if ($passwd != $cpasswd) {
 			$error = "Passwords does not match";
-		} elseif (mysqli_num_rows($res) >= 1) {
+		} elseif ($taken != NULL) {
 			$error = "Username is already taken";
 		} else {
 			$hpasswd = encrypt_password($passwd);
