@@ -19,7 +19,7 @@
 		}else{
 			
 			if ($stmt = mysqli_prepare($con, "SELECT * FROM products WHERE id=?")) {
-				mysqli_stmt_bind_param($stmt, "d", $id); // bind the parameters
+				mysqli_stmt_bind_param($stmt, "i", $id); // bind the parameters
 				mysqli_stmt_execute($stmt); // execute statement
 				$res = mysqli_stmt_get_result($stmt); // bind the result
 			}
