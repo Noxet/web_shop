@@ -10,14 +10,20 @@
 
 	$message = '';
 	if(isset($_GET['action']) && $_GET['action'] == "add"){
+		
 		$id = intval($_GET['id']);
 
 		if(isset($_SESSION['cartman'][$id])){
 			$_SESSION['cartman'][$id]['quantity']++;
 			$_SESSION['total'] += $_SESSION['cartman'][$id]['price'];
 		}else{
-			$query = "SELECT * FROM products WHERE id={$id}"; // SQL INJECTION
-			$res = mysqli_query($con, $query);
+			
+			if ($stmt = mysqli_prepare($con, "SELECT * FROM products WHERE id=?")) {
+				mysqli_stmt_bind_param($stmt, "d", $id); // bind the parameters
+				mysqli_stmt_execute($stmt); // execute statement
+				$res = mysqli_stmt_get_result($stmt); // bind the result
+			}
+
 			if(mysqli_num_rows($res) != 0){
 				$row = mysqli_fetch_array($res);
 				$_SESSION['cartman'][$row['id']] = array("name" => $row['name'], "quantity" => 1, "price" => $row['price']);
