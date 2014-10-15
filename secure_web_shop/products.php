@@ -17,13 +17,7 @@
 			$_SESSION['cartman'][$id]['quantity']++;
 			$_SESSION['total'] += $_SESSION['cartman'][$id]['price'];
 		}else{
-			
-			if ($stmt = mysqli_prepare($con, "SELECT * FROM products WHERE id=?")) {
-				mysqli_stmt_bind_param($stmt, "i", $id); // bind the parameters
-				mysqli_stmt_execute($stmt); // execute statement
-				$res = mysqli_stmt_get_result($stmt); // bind the result
-			}
-
+			$res = mysqli_query($con, "SELECT * FROM products WHERE id={$id}");
 			if(mysqli_num_rows($res) != 0){
 				$row = mysqli_fetch_array($res);
 				$_SESSION['cartman'][$row['id']] = array("name" => $row['name'], "quantity" => 1, "price" => $row['price']);

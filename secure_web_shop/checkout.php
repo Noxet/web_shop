@@ -9,12 +9,16 @@
 	
 	$capt_msg = '';
 	if (isset($_POST['submit'])) {
-		$image = new Securimage();
-		if ($image->check($_POST['captcha_code']) == true) {
-			header('location: thnx.php');
-			die();
+		if (!isset($_SESSION['user'])) {
+			$capt_msg = "Please log in to complete your purchase";
 		} else {
-			$capt_msg = "The value you have entered is invalid";
+			$image = new Securimage();
+			if ($image->check($_POST['captcha_code']) == true) {
+				header('location: thnx.php');
+				die();
+			} else {
+				$capt_msg = "The value you have entered is invalid";
+			}
 		}
 	}
 ?>
