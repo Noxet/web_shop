@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $taken);
 			mysqli_stmt_fetch($stmt);
+			mysqli_stmt_close($stmt);
 		}
 
 		if ($passwd != $cpasswd) {
@@ -30,8 +31,9 @@ if (isset($_POST['submit'])) {
 		} else {
 			$hpasswd = encrypt_password($passwd);
 			$query = mysqli_query($con, "insert into `members` values(NULL, '$uname', '$hpasswd', '$home')");
+			$query2 = mysqli_query($con, "insert into login_attempts values(NULL, '$uname', 0, 0)");
 
-			if ($query) {
+			if ($query && $query2) {
 				$success = 'You have successfully created an account, please log in to shop';
 				// register the username
 				$query = mysqli_query($con, "insert into `taken_usernames` values('$uname')");
